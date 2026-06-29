@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반도체 기업 뉴스 | 한국 주식 인사이트</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="site-title">반도체 기업 뉴스</div>
+            <div class="menu-items">
+                <button class="menu-item active" data-category="all">전체뉴스</button>
+                <div class="dropdown">
+                    <button class="menu-item" data-category="overseas">해외 반도체기업 뉴스</button>
+                    <div class="dropdown-content">
+                        <button class="submenu-item" data-category="overseas" data-company="마이크론 테크놀러지">마이크론 테크놀러지</button>
+                        <button class="submenu-item" data-category="overseas" data-company="샌디스크">샌디스크</button>
+                        <button class="submenu-item" data-category="overseas" data-company="인텔">인텔</button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="menu-item" data-category="domestic">국내 반도체기업 뉴스</button>
+                    <div class="dropdown-content">
+                        <button class="submenu-item" data-category="domestic" data-company="삼성전자">삼성전자</button>
+                        <button class="submenu-item" data-category="domestic" data-company="SK하이닉스">SK하이닉스</button>
+                        <button class="submenu-item" data-category="domestic" data-company="한미반도체">한미반도체</button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="menu-item" data-category="interest">관심 기업</button>
+                    <div class="dropdown-content">
+                        <button class="submenu-item" data-category="interest" data-company="엔비디아">엔비디아</button>
+                        <button class="submenu-item" data-category="interest" data-company="인텔">인텔</button>
+                        <button class="submenu-item" data-category="interest" data-company="샌디스크">샌디스크</button>
+                        <button class="submenu-item" data-category="interest" data-company="마이크론 테크놀러지">마이크론테크놀러지</button>
+                    </div>
+                </div>
+                <button class="menu-item" data-category="invest">투자 기업</button>
+                <button class="menu-item" data-category="invest_method">주식투자법</button>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <a href="stitch_us.html" class="btn-pulse-link">반도체 소식 (Pulse)</a>
+                <button id="write-btn" class="btn-write">뉴스 게시</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text-content">
+                <span class="hero-badge">BEST INSIGHT</span>
+                <h1 class="hero-title">반도체 산업의 미래를 읽다</h1>
+                <p class="hero-subtitle">최신 기업 소식과 시장 트렌드를 한눈에 확인하세요.</p>
+            </div>
+
+            <div class="video-container">
+                <video class="promo-video" autoplay muted loop playsinline controls>
+                    <source src="반도체 뉴스 홈페이지 홍보영상.mp4" type="video/mp4">
+                    브라우저가 비디오 태그를 지원하지 않습니다.
+                </video>
+                <div class="video-glow"></div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>SCROLL</span>
+                <div class="mouse-icon"></div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <header class="page-header">
+            <h1 id="current-category-title">전체 뉴스 피드</h1>
+            <p>실시간으로 업데이트되는 한국 주식 및 반도체 산업 소식입니다.</p>
+        </header>
+
+        <section class="board-container">
+            <div id="posts-list" class="posts-list">
+                <!-- Posts will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Post Modal -->
+    <div id="post-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>새 뉴스 게시</h2>
+                <button id="close-modal">&times;</button>
+            </div>
+            <form id="post-form">
+                <div class="form-group">
+                    <label>카테고리</label>
+                    <select id="post-category" required>
+                        <option value="overseas">해외 반도체기업 뉴스</option>
+                        <option value="domestic">국내 반도체기업 뉴스</option>
+                        <option value="interest">관심 기업</option>
+                        <option value="invest">투자 기업</option>
+                        <option value="invest_method">주식투자법</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" id="post-title" placeholder="뉴스 제목을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label>관련 기업명</label>
+                    <input type="text" id="post-company" placeholder="예: 삼성전자, SK하이닉스 등" required>
+                </div>
+                <div class="form-group">
+                    <label>뉴스 내용</label>
+                    <textarea id="post-content" rows="6" placeholder="상세 내용을 입력하세요" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>이미지 URL (선택사항)</label>
+                    <input type="url" id="post-image" placeholder="https://example.com/image.jpg">
+                </div>
+                <button type="submit" class="btn-submit">게시하기</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 반도체 기업 뉴스 | 한국 주식 및 반도체 인사이트</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
